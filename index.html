@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Calculator app</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body class="bg-gray-900">
+
+  <div class="flex justify-center w-full items-center h-[100vh] px-5">
+    <div class="bg-[#3b4664] w-[550px] h-fit md:px-7 px-5 text-[#faffff] py-10 rounded-lg">
+      <div class="flex justify-between items-center">
+        <p class="text-[30px] font-bold">calc</p>
+        <div>
+          <p class="font-bold text-[12px]">THEME</p>
+        </div>
+      </div>
+
+      <!-- <input type="text" class="bg-[#181f32] w-full my-5 h-20 text-[35px] font-bold text-right rounded-lg"> -->
+
+      <div class="bg-[#181f32] text-[#fdfffd] w-full my-5 h-20 text-[35px] font-bold text-right rounded-lg input flex items-center justify-end px-5">
+
+      </div>
+
+      <div class="bg-[#252d44] grid grid-cols-4 gap-4 p-5 rounded-lg">
+        <button onclick="displayCalculation('7')"
+        class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">7</button>
+         <button onclick="displayCalculation('8')"
+          class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">8</button>
+         <button onclick="displayCalculation('9')" 
+          class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">9</button>
+         <button onclick="deleteNumber()" class="bg-[#637298] text-white text-[20px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#404e75] hover:bg-[#a3b2e2] transition ease-in-out cursor-pointer hover:bg-[#a3b2e2] ">DEL</button>
+         <button onclick="displayCalculation('4')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">4</button>
+         <button onclick="displayCalculation('5')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">5</button>
+         <button onclick="displayCalculation('6')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">6</button>
+         <button onclick="displayCalculation('+')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">+</button>
+         <button onclick="displayCalculation('1')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">1</button>
+         <button onclick="displayCalculation('2')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">2</button>
+         <button onclick="displayCalculation('3')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">3</button>
+         <button onclick="displayCalculation('-')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">-</button>
+         <button onclick="displayCalculation('.')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">.</button>
+         <button onclick="displayCalculation('0')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">0</button>
+         <button onclick="displayCalculation('/')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">/</button>
+         <button onclick="displayCalculation('*')" class="bg-[#eae3db] text-[#424855] text-[30px] font-bold rounded-lg py-2 shadow-[1px_4px_0px_#b3a297] cursor-pointer hover:bg-white">x</button>
+        <button onclick="resetDisplay()" class="col-span-2 bg-[#637298] text-white text-[20px] font-bold rounded-lg py-3 shadow-[1px_4px_0px_#404e75] hover:bg-[#a3b2e2] transition ease-in-out cursor-pointer">RESET</button>
+        <button onclick="calculate()"
+         class="col-span-2 col-span-2 bg-[#d13530] text-white text-[20px] font-bold rounded-lg py-3 shadow-[1px_4px_0px_#912418] cursor-pointer hover:bg-[#f9635b]">=</button>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
